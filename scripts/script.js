@@ -19,8 +19,12 @@ Book.prototype.info = function () {
 const mistborn = new Book('Mistborn', 'Brandon Sanderson', 672, true);
 const wellOfAscension = new Book('Well of Ascension', 'Brandon Sanderson', 781, true);
 const heroOfAges = new Book('Hero of Ages', 'Brandon Sanderson', 608, false);
+const randobook1 = new Book('I Dunno', 'Me', 7, true)
+const randobook2 = new Book('I Dunno', 'Me', 8, true)
+const randobook3 = new Book('I Dunno', 'Me', 8, true)
+const randobook4 = new Book('I Dunno', 'Me', 8, true)
 
-const testBooks = [mistborn, wellOfAscension, heroOfAges]
+const testBooks = [mistborn, wellOfAscension, heroOfAges, randobook1, randobook2, randobook3, randobook4, randobook4, randobook4]
 
 function addBookToLibrary(bookToAdd) {
     myLibrary.unshift(bookToAdd)
@@ -38,10 +42,12 @@ myLibrary.forEach(book => {
     const cardPages = document.createElement('li')
     const cardRead = document.createElement('li');
 
+    bookCard.classList.add('book-card');
+
     cardTitle.textContent = book.title;
-    cardAuthor.textContent = book.author;
-    cardPages.textContent = book.pages;
-    cardRead.textContent = book.read;
+    cardAuthor.textContent = `By: ${book.author}`;
+    cardPages.textContent = `Pages: ${book.pages}`;
+    cardRead.textContent = `${book.read ? 'Read' : 'Not Read'}`;
 
     cardContent.append(cardAuthor, cardPages, cardRead);
     bookCard.append(cardTitle,cardContent);
