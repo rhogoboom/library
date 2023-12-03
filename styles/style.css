@@ -10,7 +10,7 @@ ul {
     list-style: none;
 }
 
-h1, h3, ul {
+h1, h2, h3, ul {
     margin: 0;
     padding: 0;
 }
@@ -36,3 +36,34 @@ header {
     border-radius: 8px;
     overflow-wrap: break-word;
 }
+
+dialog {
+    width: 400px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 1rem;;
+}
+
+input:focus {
+    border-radius: #000;
+}
+
+
+form li {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    text-align: right;
+    gap: 8px;
+}
+
+form li:last-of-type {
+    grid-template-columns: 1fr 1fr;
+}
+
+form button {
+    border-radius: 8px;
+    padding: 1rem;
+    border: none;
+}
+

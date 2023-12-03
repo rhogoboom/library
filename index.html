@@ -16,7 +16,36 @@
     <header>
         <h1>My Library</h1>
         <ul>
-            <li><button>Add New Book</button></li>
+            <li>
+                <dialog id="addBookDialog">
+                    <h2>Add New Book</h2>
+                    <form id="add-book-form">
+                        <ul>
+                            <li>
+                                <label for="book-title">Book Title:</label>
+                                <input type="text" name="book-title" id="book-title" required autofocus>
+                            </li>
+                            <li>
+                                <label for="author-name">Author Name:</label>
+                                <input type="text" name="author-name" id="author-name" required>
+                            </li>
+                            <li>
+                                <label for="pages">Total Pages:</label>
+                                <input type="number" name="pages" id="pages" required min="1">
+                            </li>
+                            <li>
+                                <label for="read">Read:</label>
+                                <input type="checkbox" name="read" id="read">
+                            </li>
+                            <li>
+                                <button type="submit" id="add-new-book">Submit</button>
+                                <button type="reset" id="cancel-add-new-book">Cancel</button>
+                            </li>
+                        </ul>
+                    </form>
+                </dialog>
+                <button>Add New Book</button>
+            </li>
         </ul>
     </header>
     <div class="content">
