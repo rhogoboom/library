@@ -35,6 +35,24 @@ header {
     box-sizing: border-box;
     border-radius: 8px;
     overflow-wrap: break-word;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 2rem 1fr;
+}
+
+.book-card h3 {
+    align-self: center;
+}
+
+.remove-button {
+    color: black;
+    border: none;
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    align-self: center;
+    background-color: white;
+    text-align: center;
 }
 
 dialog {

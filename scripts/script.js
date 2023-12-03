@@ -36,6 +36,7 @@ testBooks.forEach(book => addBookToLibrary(book));
 // Render books
 function renderLibrary(library) {
     const newCards = []
+    let i = 0;
     library.forEach(book => {
         const bookCard = document.createElement('div');
         const cardTitle = document.createElement('h3');
@@ -43,8 +44,11 @@ function renderLibrary(library) {
         const cardAuthor = document.createElement('li');
         const cardPages = document.createElement('li')
         const cardRead = document.createElement('li');
+        const removeButton = createBookRemoveButton();
     
         bookCard.classList.add('book-card');
+        bookCard.dataset.index = i;
+        i++;
     
         cardTitle.textContent = book.title;
         cardAuthor.textContent = `By: ${book.author}`;
@@ -52,7 +56,7 @@ function renderLibrary(library) {
         cardRead.textContent = `${book.read ? 'Read' : 'Not Read'}`;
     
         cardContent.append(cardAuthor, cardPages, cardRead);
-        bookCard.append(cardTitle,cardContent);
+        bookCard.append(cardTitle,removeButton, cardContent);
 
         newCards.push(bookCard);
     })
@@ -61,25 +65,6 @@ function renderLibrary(library) {
 }
 
 renderLibrary(myLibrary);
-// myLibrary.forEach(book => {
-//     const bookCard = document.createElement('div');
-//     const cardTitle = document.createElement('h3');
-//     const cardContent = document.createElement('ul');
-//     const cardAuthor = document.createElement('li');
-//     const cardPages = document.createElement('li')
-//     const cardRead = document.createElement('li');
-
-//     bookCard.classList.add('book-card');
-
-//     cardTitle.textContent = book.title;
-//     cardAuthor.textContent = `By: ${book.author}`;
-//     cardPages.textContent = `Pages: ${book.pages}`;
-//     cardRead.textContent = `${book.read ? 'Read' : 'Not Read'}`;
-
-//     cardContent.append(cardAuthor, cardPages, cardRead);
-//     bookCard.append(cardTitle,cardContent);
-//     contentContainer.appendChild(bookCard);
-// })
 
 const dialog = document.querySelector('dialog');
 const showButton = document.querySelector('dialog + button');
@@ -112,3 +97,16 @@ submitButton.addEventListener('click', (e) => {
 
     dialog.close();
 } )
+
+function createBookRemoveButton() {
+    const btn = document.createElement('button');
+    btn.textContent = 'x';
+    btn.classList.add('remove-button');
+    btn.addEventListener('click', () => {
+        const thisIndex = btn.parentElement.dataset.index;
+        myLibrary.splice(thisIndex, 1);
+        renderLibrary(myLibrary);
+    })
+    return btn;
+}
+
