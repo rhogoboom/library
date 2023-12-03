@@ -43,7 +43,7 @@ function renderLibrary(library) {
         const cardContent = document.createElement('ul');
         const cardAuthor = document.createElement('li');
         const cardPages = document.createElement('li')
-        const cardRead = document.createElement('li');
+        const cardRead = createReadButton('li');
         const removeButton = createBookRemoveButton();
     
         bookCard.classList.add('book-card');
@@ -110,3 +110,12 @@ function createBookRemoveButton() {
     return btn;
 }
 
+function createReadButton() {
+    const li = document.createElement('li');
+    li.addEventListener('click', () => {
+        const thisIndex = li.parentElement.parentElement.dataset.index;
+        myLibrary[thisIndex].read = !myLibrary[thisIndex].read
+        li.textContent = myLibrary[thisIndex].read ? 'Read' : 'Not Read';
+    });
+    return li;
+}
