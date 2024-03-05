@@ -2,18 +2,45 @@ const myLibrary = [];
 const contentContainer = document.querySelector('.content');
 
 // Initialize constructor function
-function Book(title, author, pages, read) {
-    // Book constructor
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-};
-
-// Add prototype methods
-Book.prototype.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages}, ${this.read ? 'read' : 'not yet read'}`;
+class Book {
+    constructor(title, author, pages, read) {
+       // Book constructor
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read; 
+    }
+    info() {
+        return `${this.title} by ${this.author}, ${this.pages}, ${this.read ? 'read' : 'not yet read'}`;
+    }
 }
+
+class Library {
+    books;
+    constructor(bookList) {
+        this.books = bookList
+    }
+
+    addBookToLibrary(book) {
+        this.books.unshift(book);
+    }
+
+
+}
+
+class UI {
+    cache = {
+        contentContainer: document.querySelector('.content'),
+        dialog: document.querySelector('dialog'),
+        showButton: document.querySelector('dialog + button'),
+        submitButton: document.querySelector('#add-new-book'),
+        closeButton: document.querySelector('#cancel-add-new-book'),
+    }
+
+    
+}
+
+myUI = new UI();
 
 // initialize individual book instances for testing purposes
 const mistborn = new Book('Mistborn', 'Brandon Sanderson', 672, true);
@@ -25,6 +52,8 @@ const randobook3 = new Book('I Dunno', 'Me', 8, true)
 const randobook4 = new Book('I Dunno', 'Me', 8, true)
 
 const testBooks = [mistborn, wellOfAscension, heroOfAges, randobook1, randobook2, randobook3, randobook4, randobook4, randobook4]
+
+const myNewLibrary = new Library(testBooks);
 
 function addBookToLibrary(bookToAdd) {
     myLibrary.unshift(bookToAdd)
